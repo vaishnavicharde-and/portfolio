@@ -1,0 +1,460 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Vaishnavi Charde | Salesforce Developer</title>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap" rel="stylesheet"/>
+<style>
+:root{
+  --bg:#07070f;--bg2:#0b0b16;--card:#10101e;--card2:#13132a;
+  --border:rgba(99,102,241,0.16);--border2:rgba(99,102,241,0.28);
+  --accent:#6366f1;--accent2:#818cf8;--accent3:#a5b4fc;
+  --text:#eeeeff;--muted:#8888aa;--soft:#c4c4e0;
+  --green:#34d399;--teal:#2dd4bf;--gold:#fbbf24;--rose:#f472b6;
+  --tag-bg:rgba(99,102,241,0.1);--tag-border:rgba(99,102,241,0.28);
+  --radius:18px;--radius-sm:10px;
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{background:var(--bg);color:var(--text);font-family:'DM Sans',sans-serif;font-size:16px;line-height:1.75;overflow-x:hidden;}
+.orb{position:fixed;border-radius:50%;filter:blur(140px);pointer-events:none;z-index:0;}
+.orb1{width:700px;height:700px;background:rgba(99,102,241,0.07);top:-250px;right:-200px;}
+.orb2{width:500px;height:500px;background:rgba(45,212,191,0.05);bottom:-100px;left:-150px;}
+.orb3{width:300px;height:300px;background:rgba(244,114,182,0.04);top:50%;left:40%;}
+nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:1.1rem 5rem;background:rgba(7,7,15,0.88);backdrop-filter:blur(20px);border-bottom:1px solid var(--border);}
+.nav-logo{font-family:'Syne',sans-serif;font-weight:800;font-size:1.4rem;background:linear-gradient(135deg,var(--accent2),var(--teal));-webkit-background-clip:text;-webkit-text-fill-color:transparent;letter-spacing:-0.5px;}
+.nav-links{display:flex;gap:2.2rem;}
+.nav-links a{color:var(--muted);font-size:0.88rem;text-decoration:none;font-weight:500;letter-spacing:0.3px;transition:color 0.2s;}
+.nav-links a:hover{color:var(--text);}
+.nav-cta{background:var(--accent)!important;color:#fff!important;-webkit-text-fill-color:#fff!important;padding:0.42rem 1.2rem;border-radius:50px;font-size:0.84rem!important;transition:background 0.2s,transform 0.15s!important;}
+.nav-cta:hover{background:#4f46e5!important;transform:translateY(-1px);}
+#hero{min-height:100vh;display:flex;align-items:center;justify-content:center;padding:8rem 4rem 5rem;text-align:center;position:relative;z-index:1;}
+.hero-inner{max-width:820px;}
+.hero-badge{display:inline-flex;align-items:center;gap:0.5rem;background:rgba(99,102,241,0.1);border:1px solid var(--tag-border);border-radius:50px;padding:0.4rem 1.2rem;font-size:0.8rem;font-weight:500;color:var(--accent3);margin-bottom:2.2rem;letter-spacing:0.6px;}
+.badge-dot{width:7px;height:7px;background:var(--green);border-radius:50%;animation:pulse 2s infinite;}
+@keyframes pulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:0.5;transform:scale(1.4)}}
+h1{font-family:'Syne',sans-serif;font-size:clamp(2.8rem,6vw,5.2rem);font-weight:800;line-height:1.03;letter-spacing:-2.5px;margin-bottom:1.3rem;color:#fff;}
+h1 span{background:linear-gradient(130deg,var(--accent2) 0%,var(--teal) 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;}
+.hero-sub{font-size:1.1rem;color:var(--soft);max-width:610px;margin:0 auto 2.8rem;font-weight:300;line-height:1.85;}
+.hero-btns{display:flex;gap:1rem;justify-content:center;flex-wrap:wrap;}
+.btn-primary{background:linear-gradient(135deg,var(--accent),#4f46e5);color:#fff;padding:0.82rem 2.2rem;border-radius:50px;font-weight:500;font-size:0.95rem;text-decoration:none;border:none;cursor:pointer;transition:transform 0.2s,box-shadow 0.2s;box-shadow:0 4px 28px rgba(99,102,241,0.32);}
+.btn-primary:hover{transform:translateY(-2px);box-shadow:0 8px 36px rgba(99,102,241,0.5);}
+.btn-outline{background:transparent;color:var(--text);border:1px solid var(--border2);padding:0.82rem 2.2rem;border-radius:50px;font-weight:500;font-size:0.95rem;text-decoration:none;transition:border-color 0.2s,background 0.2s;}
+.btn-outline:hover{border-color:var(--accent2);background:rgba(99,102,241,0.07);}
+.hero-stats{display:flex;gap:3.5rem;justify-content:center;margin-top:4rem;padding-top:3rem;border-top:1px solid var(--border);}
+.stat-num{font-family:'Syne',sans-serif;font-size:2.1rem;font-weight:800;color:#fff;}
+.stat-num span{color:var(--accent2);}
+.stat-label{font-size:0.8rem;color:var(--muted);margin-top:0.2rem;letter-spacing:0.3px;}
+section{position:relative;z-index:1;}
+.section-wrap{padding:6rem 5rem;max-width:1120px;margin:0 auto;}
+.section-label{font-size:0.72rem;font-weight:600;letter-spacing:3.5px;text-transform:uppercase;color:var(--accent2);margin-bottom:0.8rem;}
+.section-title{font-family:'Syne',sans-serif;font-size:2.3rem;font-weight:800;letter-spacing:-1px;color:#fff;margin-bottom:0.5rem;}
+.section-sub{color:var(--muted);font-size:0.97rem;margin-bottom:3rem;}
+.divider{height:1px;background:var(--border);margin-bottom:3rem;}
+.about-grid{display:grid;grid-template-columns:1.1fr 0.9fr;gap:4.5rem;align-items:start;}
+.about-text p{color:var(--soft);line-height:1.9;font-size:1rem;margin-bottom:1.1rem;}
+.about-highlights{display:flex;flex-direction:column;gap:0.9rem;}
+.highlight-card{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:1.3rem 1.5rem;transition:border-color 0.3s,transform 0.2s;display:flex;align-items:flex-start;gap:1rem;}
+.highlight-card:hover{border-color:var(--accent);transform:translateX(5px);}
+.hl-icon{font-size:1.35rem;flex-shrink:0;margin-top:2px;}
+.hl-title{font-family:'Syne',sans-serif;font-weight:700;font-size:0.95rem;color:#fff;margin-bottom:0.2rem;}
+.hl-text{color:var(--muted);font-size:0.83rem;}
+.skills-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(290px,1fr));gap:1.4rem;}
+.skill-card{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:1.8rem;transition:border-color 0.3s,transform 0.2s;}
+.skill-card:hover{border-color:var(--accent2);transform:translateY(-4px);}
+.skill-card-header{display:flex;align-items:center;gap:0.9rem;margin-bottom:1.2rem;}
+.skill-icon{width:42px;height:42px;border-radius:11px;display:flex;align-items:center;justify-content:center;font-size:1.2rem;flex-shrink:0;}
+.icon-purple{background:rgba(99,102,241,0.15);}
+.icon-teal{background:rgba(45,212,191,0.12);}
+.icon-gold{background:rgba(251,191,36,0.12);}
+.icon-green{background:rgba(52,211,153,0.12);}
+.skill-cat{font-family:'Syne',sans-serif;font-weight:700;font-size:1rem;color:#fff;}
+.tags{display:flex;flex-wrap:wrap;gap:0.45rem;}
+.tag{background:var(--tag-bg);border:1px solid var(--tag-border);border-radius:50px;padding:0.28rem 0.78rem;font-size:0.77rem;color:var(--accent3);font-weight:500;}
+.exp-timeline{position:relative;padding-left:2rem;}
+.exp-timeline::before{content:'';position:absolute;left:0;top:10px;bottom:0;width:1px;background:linear-gradient(to bottom,var(--accent),transparent);}
+.exp-item{position:relative;margin-bottom:3rem;}
+.exp-dot{position:absolute;left:-2.44rem;top:8px;width:15px;height:15px;border-radius:50%;background:var(--accent);box-shadow:0 0 0 5px rgba(99,102,241,0.15);}
+.exp-header{display:flex;justify-content:space-between;flex-wrap:wrap;gap:0.5rem;margin-bottom:0.5rem;}
+.exp-role{font-family:'Syne',sans-serif;font-weight:700;font-size:1.2rem;color:#fff;}
+.exp-company{color:var(--accent2);font-weight:500;font-size:0.94rem;margin-bottom:0.3rem;}
+.exp-badge{background:var(--tag-bg);border:1px solid var(--tag-border);border-radius:50px;padding:0.25rem 0.8rem;font-size:0.77rem;color:var(--accent3);}
+.exp-bullets{list-style:none;margin-top:1rem;}
+.exp-bullets li{color:var(--soft);font-size:0.94rem;margin-bottom:0.6rem;padding-left:1.3rem;position:relative;}
+.exp-bullets li::before{content:'›';position:absolute;left:0;color:var(--accent2);font-weight:bold;font-size:1.1rem;}
+.projects-col{display:flex;flex-direction:column;gap:2rem;}
+
+/* FEATURED PROJECT */
+.project-card-featured{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);overflow:hidden;transition:border-color 0.3s,transform 0.2s;position:relative;}
+.project-card-featured::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--accent),var(--teal),var(--rose));}
+.project-card-featured:hover{border-color:var(--accent2);transform:translateY(-4px);}
+.pfeat-header{padding:2rem 2.2rem 1.5rem;display:flex;align-items:flex-start;justify-content:space-between;gap:1rem;border-bottom:1px solid var(--border);}
+.pfeat-num{font-size:0.72rem;font-weight:600;letter-spacing:3px;text-transform:uppercase;color:var(--accent2);margin-bottom:0.6rem;}
+.pfeat-name{font-family:'Syne',sans-serif;font-weight:800;font-size:1.55rem;color:#fff;margin-bottom:0.5rem;line-height:1.2;}
+.pfeat-tagline{color:var(--muted);font-size:0.9rem;}
+.pfeat-badge-wrap{display:flex;flex-direction:column;gap:0.5rem;align-items:flex-end;flex-shrink:0;}
+.pfeat-badge{background:rgba(52,211,153,0.1);border:1px solid rgba(52,211,153,0.25);border-radius:50px;padding:0.28rem 0.85rem;font-size:0.76rem;color:var(--green);font-weight:500;white-space:nowrap;}
+.pfeat-badge-blue{background:rgba(45,212,191,0.1);border-color:rgba(45,212,191,0.25);color:var(--teal);}
+.pfeat-body{padding:1.8rem 2.2rem;}
+.pfeat-objective{background:rgba(99,102,241,0.06);border:1px solid rgba(99,102,241,0.12);border-left:3px solid var(--accent);border-radius:var(--radius-sm);padding:1.2rem 1.5rem;margin-bottom:1.8rem;color:var(--soft);font-size:0.93rem;line-height:1.8;}
+.pfeat-grid{display:grid;grid-template-columns:1fr 1fr;gap:1.5rem;margin-bottom:1.8rem;}
+.pfeat-section-title{font-family:'Syne',sans-serif;font-weight:700;font-size:0.82rem;color:var(--accent3);text-transform:uppercase;letter-spacing:1.5px;margin-bottom:0.9rem;}
+.problem-list{list-style:none;}
+.problem-list li{display:flex;align-items:flex-start;gap:0.7rem;color:var(--soft);font-size:0.88rem;margin-bottom:0.6rem;padding-bottom:0.6rem;border-bottom:1px solid rgba(255,255,255,0.04);}
+.problem-list li:last-child{border-bottom:none;margin-bottom:0;padding-bottom:0;}
+.prob-icon{color:var(--rose);font-size:0.9rem;margin-top:3px;flex-shrink:0;}
+.cloud-pills{display:flex;flex-direction:column;gap:0.6rem;}
+.cloud-pill{display:flex;align-items:center;gap:0.8rem;background:var(--card2);border:1px solid var(--border);border-radius:var(--radius-sm);padding:0.7rem 1rem;font-size:0.85rem;}
+.cloud-pill-dot{width:9px;height:9px;border-radius:50%;flex-shrink:0;}
+.dot-sales{background:#6366f1;}.dot-service{background:#2dd4bf;}
+.cloud-pill-name{color:#fff;font-weight:500;}
+.cloud-pill-desc{color:var(--muted);font-size:0.78rem;}
+.objects-section{margin-bottom:1.8rem;}
+.objects-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:0.7rem;}
+.obj-card{background:var(--card2);border:1px solid var(--border);border-radius:var(--radius-sm);padding:0.85rem 1rem;transition:border-color 0.2s;}
+.obj-card:hover{border-color:var(--accent2);}
+.obj-name{font-family:'Syne',sans-serif;font-weight:700;font-size:0.82rem;color:var(--accent3);margin-bottom:0.25rem;}
+.obj-desc{color:var(--muted);font-size:0.74rem;line-height:1.5;}
+.flow-section{margin-bottom:0.5rem;}
+.flow-steps{display:flex;align-items:stretch;gap:0.5rem;flex-wrap:wrap;}
+.flow-step{background:var(--card2);border:1px solid var(--border);border-radius:var(--radius-sm);padding:1rem 1.1rem;flex:1;min-width:140px;}
+.flow-arrow{display:flex;align-items:center;color:var(--accent2);font-size:1.2rem;padding:0 0.1rem;align-self:center;flex-shrink:0;}
+.flow-step-num{font-size:0.67rem;font-weight:600;letter-spacing:2px;color:var(--accent2);text-transform:uppercase;margin-bottom:0.3rem;}
+.flow-step-name{font-family:'Syne',sans-serif;font-weight:700;font-size:0.86rem;color:#fff;margin-bottom:0.3rem;}
+.flow-step-desc{color:var(--muted);font-size:0.75rem;line-height:1.5;}
+.pfeat-tags{display:flex;flex-wrap:wrap;gap:0.45rem;padding:1.4rem 2.2rem;border-top:1px solid var(--border);}
+.pfeat-tag-teal{background:rgba(45,212,191,0.08);border:1px solid rgba(45,212,191,0.22);border-radius:50px;padding:0.26rem 0.75rem;font-size:0.76rem;color:var(--teal);}
+.projects-minor{display:grid;grid-template-columns:1fr 1fr;gap:1.4rem;}
+.project-card{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:2rem 2.2rem;transition:border-color 0.3s,transform 0.2s;position:relative;overflow:hidden;}
+.project-card::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,var(--accent),var(--teal));opacity:0;transition:opacity 0.3s;}
+.project-card:hover{border-color:var(--accent2);transform:translateY(-4px);}
+.project-card:hover::before{opacity:1;}
+.project-num{font-family:'Syne',sans-serif;font-size:0.72rem;font-weight:700;letter-spacing:2.5px;color:var(--accent2);margin-bottom:0.8rem;text-transform:uppercase;}
+.project-name{font-family:'Syne',sans-serif;font-weight:800;font-size:1.25rem;color:#fff;margin-bottom:0.8rem;}
+.project-desc{color:var(--muted);font-size:0.9rem;line-height:1.75;margin-bottom:1.2rem;}
+.project-tags{display:flex;flex-wrap:wrap;gap:0.4rem;}
+.project-tag{background:rgba(45,212,191,0.08);border:1px solid rgba(45,212,191,0.2);border-radius:50px;padding:0.22rem 0.72rem;font-size:0.75rem;color:var(--teal);}
+.cert-card{display:inline-flex;align-items:center;gap:1.6rem;background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:2rem 2.8rem;transition:border-color 0.3s;}
+.cert-card:hover{border-color:var(--gold);}
+.cert-badge{width:64px;height:64px;border-radius:50%;background:linear-gradient(135deg,rgba(251,191,36,0.2),rgba(251,191,36,0.05));border:2px solid rgba(251,191,36,0.3);display:flex;align-items:center;justify-content:center;font-size:2rem;flex-shrink:0;}
+.cert-name{font-family:'Syne',sans-serif;font-weight:800;font-size:1.2rem;color:#fff;margin-bottom:0.3rem;}
+.cert-issuer{color:var(--muted);font-size:0.86rem;}
+#contact{background:var(--bg2);}
+.contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:center;}
+.contact-info{display:flex;flex-direction:column;gap:0.9rem;}
+.contact-item{display:flex;align-items:center;gap:1rem;background:var(--card);border:1px solid var(--border);border-radius:var(--radius-sm);padding:1rem 1.4rem;text-decoration:none;color:inherit;transition:border-color 0.2s,transform 0.2s;}
+.contact-item:hover{border-color:var(--accent);transform:translateX(5px);}
+.ci-icon{font-size:1.2rem;width:36px;text-align:center;}
+.ci-label{font-size:0.76rem;color:var(--muted);}
+.ci-val{font-weight:500;color:var(--soft);font-size:0.94rem;}
+.contact-cta h3{font-family:'Syne',sans-serif;font-size:1.85rem;font-weight:800;color:#fff;margin-bottom:1rem;line-height:1.2;}
+.contact-cta p{color:var(--muted);margin-bottom:2rem;}
+footer{background:var(--bg);border-top:1px solid var(--border);padding:1.8rem 5rem;display:flex;align-items:center;justify-content:space-between;position:relative;z-index:1;}
+.footer-logo{font-family:'Syne',sans-serif;font-weight:800;font-size:1rem;color:var(--muted);}
+.footer-text{font-size:0.8rem;color:var(--muted);}
+.fade-up{opacity:0;transform:translateY(28px);transition:opacity 0.7s ease,transform 0.7s ease;}
+.fade-up.visible{opacity:1;transform:translateY(0);}
+.fade-up.d1{transition-delay:0.1s;}.fade-up.d2{transition-delay:0.2s;}
+@media(max-width:900px){
+  nav{padding:1rem 1.5rem;}.nav-links{display:none;}
+  .section-wrap{padding:4rem 1.5rem;}
+  #hero{padding:6rem 1.5rem 3rem;}
+  h1{font-size:2.5rem;letter-spacing:-1.5px;}
+  .about-grid,.contact-grid,.pfeat-grid{grid-template-columns:1fr;}
+  .projects-minor{grid-template-columns:1fr;}
+  .hero-stats{gap:1.5rem;}
+  .pfeat-header{flex-direction:column;}
+  .pfeat-badge-wrap{align-items:flex-start;}
+  footer{flex-direction:column;gap:0.5rem;text-align:center;padding:1.5rem;}
+}
+</style>
+</head>
+<body>
+<div class="orb orb1"></div>
+<div class="orb orb2"></div>
+<div class="orb orb3"></div>
+
+<nav>
+  <div class="nav-logo">VC.</div>
+  <div class="nav-links">
+    <a href="#about">About</a>
+    <a href="#skills">Skills</a>
+    <a href="#experience">Experience</a>
+    <a href="#projects">Projects</a>
+    <a href="#contact" class="nav-cta">Contact</a>
+  </div>
+</nav>
+
+<section id="hero">
+  <div class="hero-inner">
+    <div class="hero-badge"><span class="badge-dot"></span>Available for new opportunities</div>
+    <h1>Vaishnavi<br/><span>Diliprao Charde</span></h1>
+    <p class="hero-sub">Salesforce Developer crafting enterprise solutions with Apex, LWC, and API integrations. Certified Platform Developer I with 3+ years at Tech Mahindra.</p>
+    <div class="hero-btns">
+      <a href="#projects" class="btn-primary">View My Work</a>
+      <a href="#contact" class="btn-outline">Get In Touch</a>
+    </div>
+    <div class="hero-stats">
+      <div><div class="stat-num">3<span>+</span></div><div class="stat-label">Years Experience</div></div>
+      <div><div class="stat-num">3</div><div class="stat-label">Enterprise Projects</div></div>
+      <div><div class="stat-num">1</div><div class="stat-label">Salesforce Certification</div></div>
+    </div>
+  </div>
+</section>
+
+<section id="about">
+  <div class="section-wrap">
+    <div class="section-label">About Me</div>
+    <div class="divider"></div>
+    <div class="about-grid fade-up">
+      <div class="about-text">
+        <p>I'm a Salesforce Developer with over 3 years of hands-on experience designing and implementing end-to-end solutions on the Salesforce platform. I specialize in scalable Lightning Web Components, robust Apex logic, and seamless API integrations.</p>
+        <p>At Tech Mahindra, I delivered enterprise-grade Salesforce applications — from Classic-to-Lightning migrations and SAP integrations to a full insurance lifecycle management system covering multi-state policy sales, premium collection, and renewals.</p>
+        <p>Based in Katol, Maharashtra — open to remote, hybrid, and on-site opportunities across India and globally.</p>
+      </div>
+      <div class="about-highlights">
+        <div class="highlight-card"><div class="hl-icon">🎓</div><div><div class="hl-title">B.E. Computer Science</div><div class="hl-text">RTM Nagpur University · 2016 – 2020</div></div></div>
+        <div class="highlight-card"><div class="hl-icon">🏢</div><div><div class="hl-title">Tech Mahindra Ltd</div><div class="hl-text">Salesforce Developer · Mar 2022 – Apr 2025</div></div></div>
+        <div class="highlight-card"><div class="hl-icon">🏅</div><div><div class="hl-title">Salesforce Certified Platform Developer I</div><div class="hl-text">Official Salesforce Certification</div></div></div>
+        <div class="highlight-card"><div class="hl-icon">📍</div><div><div class="hl-title">Katol, Maharashtra, India</div><div class="hl-text">Open to remote opportunities globally</div></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="skills" style="background:var(--bg2);">
+  <div class="section-wrap">
+    <div class="section-label">Technical Skills</div>
+    <div class="section-title">What I Work With</div>
+    <div class="section-sub">A full Salesforce technology stack built over 3+ years of enterprise delivery</div>
+    <div class="skills-grid fade-up">
+      <div class="skill-card">
+        <div class="skill-card-header"><div class="skill-icon icon-purple">⚡</div><div class="skill-cat">Salesforce Development</div></div>
+        <div class="tags"><span class="tag">Apex Classes</span><span class="tag">Apex Triggers</span><span class="tag">LWC</span><span class="tag">Visualforce</span><span class="tag">Aura Components</span><span class="tag">SOQL</span><span class="tag">SOSL</span><span class="tag">DML</span><span class="tag">Batch Apex</span><span class="tag">Scheduled Apex</span></div>
+      </div>
+      <div class="skill-card">
+        <div class="skill-card-header"><div class="skill-icon icon-teal">☁️</div><div class="skill-cat">Salesforce Platform</div></div>
+        <div class="tags"><span class="tag">Sales Cloud</span><span class="tag">Service Cloud</span><span class="tag">Financial Service Cloud</span><span class="tag">Lightning Experience</span><span class="tag">App Builder</span><span class="tag">Custom Objects</span><span class="tag">Page Layouts</span></div>
+      </div>
+      <div class="skill-card">
+        <div class="skill-card-header"><div class="skill-icon icon-gold">⚙️</div><div class="skill-cat">Automation & Config</div></div>
+        <div class="tags"><span class="tag">Salesforce Flow</span><span class="tag">Workflow Rules</span><span class="tag">Process Builder</span><span class="tag">Validation Rules</span><span class="tag">Approval Processes</span><span class="tag">Assignment Rules</span><span class="tag">Email Alerts</span></div>
+      </div>
+      <div class="skill-card">
+        <div class="skill-card-header"><div class="skill-icon icon-green">🔗</div><div class="skill-cat">Integration & Security</div></div>
+        <div class="tags"><span class="tag">REST API</span><span class="tag">SOAP API</span><span class="tag">OWD</span><span class="tag">Roles & Profiles</span><span class="tag">Permission Sets</span><span class="tag">Sharing Rules</span><span class="tag">Data Loader</span></div>
+      </div>
+      <div class="skill-card">
+        <div class="skill-card-header"><div class="skill-icon icon-purple">🌐</div><div class="skill-cat">Web Technologies</div></div>
+        <div class="tags"><span class="tag">HTML</span><span class="tag">CSS</span><span class="tag">JavaScript</span><span class="tag">SLDS</span></div>
+      </div>
+      <div class="skill-card">
+        <div class="skill-card-header"><div class="skill-icon icon-teal">🛠️</div><div class="skill-cat">Tools & Methodologies</div></div>
+        <div class="tags"><span class="tag">Agile/Scrum</span><span class="tag">Sandbox</span><span class="tag">Change Sets</span><span class="tag">Debug Logs</span><span class="tag">Git</span><span class="tag">Deployment</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="experience">
+  <div class="section-wrap">
+    <div class="section-label">Experience</div>
+    <div class="section-title">Where I've Worked</div>
+    <div class="section-sub">Building enterprise Salesforce solutions that scale</div>
+    <div class="exp-timeline fade-up">
+      <div class="exp-item">
+        <div class="exp-dot"></div>
+        <div class="exp-header">
+          <div><div class="exp-role">Salesforce Developer</div><div class="exp-company">Tech Mahindra Ltd — Nagpur</div></div>
+          <div><span class="exp-badge">Mar 2022 – Apr 2025</span></div>
+        </div>
+        <ul class="exp-bullets">
+          <li>Developed and customized Salesforce applications using Apex, Triggers, LWC, and Visualforce.</li>
+          <li>Built end-to-end Insurance Policy Sales Management system — lead to policy issuance across multiple states and cities.</li>
+          <li>Implemented REST and SOAP API integrations with external enterprise systems including SAP (Concord).</li>
+          <li>Developed Batch Apex, Scheduled Apex, and Apex Test Classes for large-scale data processing and 75%+ code coverage.</li>
+          <li>Automated business workflows using Salesforce Flows, Assignment Rules, Workflow Rules, and Validation Rules.</li>
+          <li>Implemented Salesforce security model — OWD, Roles, Profiles, Permission Sets, and Sharing Rules.</li>
+          <li>Performed data migration using Data Loader; managed deployments via Change Sets in Agile/Scrum environment.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="projects" style="background:var(--bg2);">
+  <div class="section-wrap">
+    <div class="section-label">Projects</div>
+    <div class="section-title">What I've Built</div>
+    <div class="section-sub">Enterprise-scale Salesforce solutions — from insurance lifecycle to payment systems</div>
+
+    <div class="projects-col">
+
+      <!-- FEATURED PROJECT -->
+      <div class="project-card-featured fade-up">
+        <div class="pfeat-header">
+          <div>
+            <div class="pfeat-num">Featured Project · 01</div>
+            <div class="pfeat-name">Insurance Policy Sales Management</div>
+            <div class="pfeat-tagline">End-to-end Salesforce solution for multi-state insurance sales lifecycle</div>
+          </div>
+          <div class="pfeat-badge-wrap">
+            <span class="pfeat-badge">Sales Cloud</span>
+            <span class="pfeat-badge pfeat-badge-blue">Financial Service Cloud</span>
+          </div>
+        </div>
+
+        <div class="pfeat-body">
+          <div class="pfeat-objective">
+            Managed the complete insurance sales lifecycle on Salesforce — from lead generation to policy issuance, premium collection, and renewals — across multiple states and cities. Covered insurance, health, and vehicle policy types for a distributed agent network.
+          </div>
+
+          <div class="pfeat-grid">
+            <div>
+              <div class="pfeat-section-title">Business Problems Solved</div>
+              <ul class="problem-list">
+                <li><span class="prob-icon">✗</span>Manual tracking of leads and policies with no central system</li>
+                <li><span class="prob-icon">✗</span>No centralized platform for agents across multiple states</li>
+                <li><span class="prob-icon">✗</span>Missed follow-ups and renewals causing revenue loss</li>
+                <li><span class="prob-icon">✗</span>Poor visibility into agent and sales performance</li>
+              </ul>
+            </div>
+            <div>
+              <div class="pfeat-section-title">Salesforce Clouds Used</div>
+              <div class="cloud-pills">
+                <div class="cloud-pill"><div class="cloud-pill-dot dot-sales"></div><div><div class="cloud-pill-name">Sales Cloud</div><div class="cloud-pill-desc">Lead, Opportunity & Agent Management</div></div></div>
+                <div class="cloud-pill"><div class="cloud-pill-dot dot-service"></div><div><div class="cloud-pill-name">Financial Service Cloud</div><div class="cloud-pill-desc">Customer queries & claim support</div></div></div>
+              </div>
+            </div>
+          </div>
+
+          <div class="objects-section">
+            <div class="pfeat-section-title">Core Salesforce Objects</div>
+            <div class="objects-grid">
+              <div class="obj-card"><div class="obj-name">Lead</div><div class="obj-desc">Prospective customer capture from web, campaigns & agents</div></div>
+              <div class="obj-card"><div class="obj-name">Account</div><div class="obj-desc">Policy holder data storage</div></div>
+              <div class="obj-card"><div class="obj-name">Contact</div><div class="obj-desc">Nominee details for policyholders</div></div>
+              <div class="obj-card"><div class="obj-name">Opportunity</div><div class="obj-desc">Insurance policy sales tracking</div></div>
+              <div class="obj-card"><div class="obj-name">Case</div><div class="obj-desc">Claims & service requests</div></div>
+              <div class="obj-card"><div class="obj-name">Policy__c</div><div class="obj-desc">Insurance policy details (custom)</div></div>
+              <div class="obj-card"><div class="obj-name">Premium__c</div><div class="obj-desc">Premium-related data (custom)</div></div>
+              <div class="obj-card"><div class="obj-name">Renewals__c</div><div class="obj-desc">Policy renewal tracking (custom)</div></div>
+              <div class="obj-card"><div class="obj-name">Agent__c</div><div class="obj-desc">Agent information & assignment</div></div>
+              <div class="obj-card"><div class="obj-name">PolicyInsurance__c</div><div class="obj-desc">Auto-created on Closed Won via Apex</div></div>
+            </div>
+          </div>
+
+          <div class="flow-section">
+            <div class="pfeat-section-title">End-to-End Sales Flow</div>
+            <div class="flow-steps">
+              <div class="flow-step">
+                <div class="flow-step-num">Step 01</div>
+                <div class="flow-step-name">Lead Creation</div>
+                <div class="flow-step-desc">Captured via website, campaigns & agent uploads</div>
+              </div>
+              <div class="flow-arrow">→</div>
+              <div class="flow-step">
+                <div class="flow-step-num">Step 02</div>
+                <div class="flow-step-name">Lead Assignment</div>
+                <div class="flow-step-desc">Auto-assigned by policy type & region via Assignment Rules</div>
+              </div>
+              <div class="flow-arrow">→</div>
+              <div class="flow-step">
+                <div class="flow-step-num">Step 03</div>
+                <div class="flow-step-name">Lead Conversion</div>
+                <div class="flow-step-desc">Qualified leads converted to Account, Contact & Opportunity</div>
+              </div>
+              <div class="flow-arrow">→</div>
+              <div class="flow-step">
+                <div class="flow-step-num">Step 04</div>
+                <div class="flow-step-name">Policy Issuance</div>
+                <div class="flow-step-desc">On Closed Won, Policy record auto-created via Apex trigger</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="pfeat-tags">
+          <span class="pfeat-tag-teal">Apex Trigger</span>
+          <span class="pfeat-tag-teal">LWC</span>
+          <span class="pfeat-tag-teal">Sales Cloud</span>
+          <span class="pfeat-tag-teal">Financial Service Cloud</span>
+          <span class="pfeat-tag-teal">Custom Objects</span>
+          <span class="pfeat-tag-teal">Assignment Rules</span>
+          <span class="pfeat-tag-teal">Salesforce Flow</span>
+          <span class="pfeat-tag-teal">SOQL / DML</span>
+          <span class="pfeat-tag-teal">Multi-state Rollout</span>
+        </div>
+      </div>
+
+      <!-- Minor Projects -->
+      <div class="projects-minor">
+        <div class="project-card fade-up d1">
+          <div class="project-num">Project 02</div>
+          <div class="project-name">Enterprise Lightning Application</div>
+          <div class="project-desc">Migrated Salesforce Classic to Lightning Experience. Built modern LWC interfaces with SLDS, integrated with SAP (Concord) via REST APIs, and implemented the full Salesforce security model within governor limits.</div>
+          <div class="project-tags"><span class="project-tag">LWC</span><span class="project-tag">Apex</span><span class="project-tag">REST API</span><span class="project-tag">SAP Integration</span><span class="project-tag">Lightning Migration</span></div>
+        </div>
+        <div class="project-card fade-up d2">
+          <div class="project-num">Project 03</div>
+          <div class="project-name">Online E-Pay Subscription System</div>
+          <div class="project-desc">Subscription-based payment management for mobile recharge, DTH, and transaction tracking. Built with Apex, Visualforce, Batch Apex, REST APIs, and automated via Flows and Workflow Rules.</div>
+          <div class="project-tags"><span class="project-tag">Apex</span><span class="project-tag">Visualforce</span><span class="project-tag">Batch Apex</span><span class="project-tag">REST API</span><span class="project-tag">Flows</span></div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<section id="certifications">
+  <div class="section-wrap">
+    <div class="section-label">Certifications</div>
+    <div class="section-title">Credentials</div>
+    <div class="section-sub">Officially recognized Salesforce expertise</div>
+    <div class="fade-up">
+      <div class="cert-card">
+        <div class="cert-badge">🏅</div>
+        <div>
+          <div class="cert-name">Salesforce Certified Platform Developer I</div>
+          <div class="cert-issuer">Issued by Salesforce · Credential verified</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="contact">
+  <div class="section-wrap">
+    <div class="section-label">Contact</div>
+    <div class="divider"></div>
+    <div class="contact-grid fade-up">
+      <div class="contact-info">
+        <a href="mailto:vaishnavi30charde@gmail.com" class="contact-item"><span class="ci-icon">✉️</span><div><div class="ci-label">Email</div><div class="ci-val">vaishnavi30charde@gmail.com</div></div></a>
+        <a href="tel:9689228907" class="contact-item"><span class="ci-icon">📱</span><div><div class="ci-label">Phone</div><div class="ci-val">+91 9689228907</div></div></a>
+        <a href="https://linkedin.com/in/vaishnavi-charde-524465218" target="_blank" class="contact-item"><span class="ci-icon">💼</span><div><div class="ci-label">LinkedIn</div><div class="ci-val">linkedin.com/in/vaishnavi-charde-524465218</div></div></a>
+        <div class="contact-item"><span class="ci-icon">📍</span><div><div class="ci-label">Location</div><div class="ci-val">Katol, Maharashtra, India</div></div></div>
+      </div>
+      <div class="contact-cta">
+        <h3>Let's build something great together.</h3>
+        <p>Open to Salesforce Developer roles, contract work, and new opportunities. I usually reply within 24 hours.</p>
+        <a href="mailto:vaishnavi30charde@gmail.com" class="btn-primary">Send Me an Email →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-logo">VC.</div>
+  <div class="footer-text">© 2025 Vaishnavi Diliprao Charde · Salesforce Developer · Nagpur, India</div>
+</footer>
+
+<script>
+  const obs = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if(e.isIntersecting) e.target.classList.add('visible'); });
+  }, { threshold: 0.08 });
+  document.querySelectorAll('.fade-up').forEach(el => obs.observe(el));
+</script>
+</body>
+</html>
