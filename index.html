@@ -10,308 +10,135 @@
     --navy: #050d1a;
     --navy2: #081428;
     --blue: #0f2544;
-    --electric: #00aaff;
-    --electric2: #0066cc;
+    --electric: #22c55e;
+    --electric2: #16a34a;
     --gold: #f0b429;
     --gold2: #ffd166;
+    --green: #22c55e;
     --white: #f0f4ff;
     --muted: #8ba0c0;
     --card: rgba(15,37,68,0.6);
-    --border: rgba(0,170,255,0.15);
-    --glow: 0 0 30px rgba(0,170,255,0.2);
+    --border: rgba(34,197,94,0.15);
+    --glow: 0 0 30px rgba(34,197,94,0.2);
   }
   *{margin:0;padding:0;box-sizing:border-box;}
   html{scroll-behavior:smooth;}
-  body{
-    font-family:'DM Sans',sans-serif;
-    background:var(--navy);
-    color:var(--white);
-    overflow-x:hidden;
-  }
+  body{font-family:'DM Sans',sans-serif;background:var(--navy);color:var(--white);overflow-x:hidden;}
 
-  /* ── CANVAS ── */
   #bg-canvas{position:fixed;top:0;left:0;width:100%;height:100%;z-index:0;pointer-events:none;}
 
-  /* ── NAV ── */
   nav{
     position:fixed;top:0;left:0;right:0;z-index:100;
-    padding:18px 5%;
-    display:flex;align-items:center;justify-content:space-between;
-    backdrop-filter:blur(20px);
-    background:rgba(5,13,26,0.85);
-    border-bottom:1px solid var(--border);
-    transition:all .3s;
+    padding:18px 5%;display:flex;align-items:center;justify-content:space-between;
+    backdrop-filter:blur(20px);background:rgba(5,13,26,0.85);
+    border-bottom:1px solid var(--border);transition:all .3s;
   }
-  .logo{
-    font-family:'Syne',sans-serif;font-weight:800;font-size:1.4rem;
-    background:linear-gradient(135deg,var(--electric),var(--gold));
-    -webkit-background-clip:text;-webkit-text-fill-color:transparent;
-    letter-spacing:-.02em;
-  }
+  .logo{font-family:'Syne',sans-serif;font-weight:800;font-size:1.4rem;background:linear-gradient(135deg,var(--electric),var(--gold));-webkit-background-clip:text;-webkit-text-fill-color:transparent;letter-spacing:-.02em;}
   .nav-links{display:flex;gap:2rem;list-style:none;}
-  .nav-links a{
-    color:var(--muted);text-decoration:none;font-size:.9rem;font-weight:500;
-    transition:color .3s;letter-spacing:.05em;text-transform:uppercase;font-size:.78rem;
-  }
+  .nav-links a{color:var(--muted);text-decoration:none;font-weight:500;transition:color .3s;letter-spacing:.05em;text-transform:uppercase;font-size:.78rem;}
   .nav-links a:hover{color:var(--electric);}
-  .nav-cta{
-    padding:8px 22px;border-radius:50px;
-    background:linear-gradient(135deg,var(--electric2),var(--electric));
-    color:#fff;text-decoration:none;font-size:.82rem;font-weight:600;
-    letter-spacing:.04em;transition:transform .2s,box-shadow .2s;
-    box-shadow:0 4px 20px rgba(0,170,255,.25);
-  }
-  .nav-cta:hover{transform:translateY(-2px);box-shadow:0 8px 30px rgba(0,170,255,.4);}
+  .nav-cta{padding:8px 22px;border-radius:50px;background:linear-gradient(135deg,var(--electric2),var(--electric));color:#fff;text-decoration:none;font-size:.82rem;font-weight:600;letter-spacing:.04em;transition:transform .2s,box-shadow .2s;box-shadow:0 4px 20px rgba(34,197,94,.25);}
+  .nav-cta:hover{transform:translateY(-2px);box-shadow:0 8px 30px rgba(34,197,94,.4);}
 
-  /* ── HERO ── */
-  #hero{
-    min-height:100vh;display:flex;align-items:center;
-    padding:120px 5% 80px;position:relative;z-index:1;
-  }
+  #hero{min-height:100vh;display:flex;align-items:center;padding:120px 5% 80px;position:relative;z-index:1;}
   .hero-inner{max-width:1100px;margin:0 auto;width:100%;}
-  .hero-badge{
-    display:inline-flex;align-items:center;gap:.5rem;
-    background:rgba(0,170,255,.08);border:1px solid rgba(0,170,255,.25);
-    border-radius:50px;padding:6px 16px;font-size:.8rem;color:var(--electric);
-    margin-bottom:2rem;letter-spacing:.06em;text-transform:uppercase;font-weight:600;
-    animation:fadeUp .8s ease both;
-  }
+  .hero-badge{display:inline-flex;align-items:center;gap:.5rem;background:rgba(34,197,94,.08);border:1px solid rgba(34,197,94,.25);border-radius:50px;padding:6px 16px;font-size:.8rem;color:var(--electric);margin-bottom:2rem;letter-spacing:.06em;text-transform:uppercase;font-weight:600;animation:fadeUp .8s ease both;}
   .badge-dot{width:7px;height:7px;border-radius:50%;background:var(--electric);animation:pulse 2s infinite;}
   @keyframes pulse{0%,100%{opacity:1;transform:scale(1);}50%{opacity:.4;transform:scale(.8);}}
 
-  .hero-name{
-    font-family:'Syne',sans-serif;font-weight:800;
-    font-size:clamp(2.8rem,7vw,5.5rem);line-height:1;
-    letter-spacing:-.04em;margin-bottom:1rem;
-    animation:fadeUp .8s .15s ease both;
-  }
-  .hero-name span{
-    display:block;
-    background:linear-gradient(135deg,var(--white) 0%,var(--electric) 60%,var(--gold) 100%);
-    -webkit-background-clip:text;-webkit-text-fill-color:transparent;
-  }
-  .hero-title{
-    font-size:clamp(1rem,2.5vw,1.35rem);color:var(--muted);font-weight:300;
-    margin-bottom:1.8rem;letter-spacing:.02em;
-    animation:fadeUp .8s .3s ease both;
-  }
+  .hero-name{font-family:'Syne',sans-serif;font-weight:800;font-size:clamp(2.8rem,7vw,5.5rem);line-height:1;letter-spacing:-.04em;margin-bottom:1rem;animation:fadeUp .8s .15s ease both;}
+  .hero-name span{display:block;background:linear-gradient(135deg,var(--white) 0%,var(--electric) 60%,var(--gold) 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;}
+  .hero-title{font-size:clamp(1rem,2.5vw,1.35rem);color:var(--muted);font-weight:300;margin-bottom:1.8rem;letter-spacing:.02em;animation:fadeUp .8s .3s ease both;}
   .hero-title strong{color:var(--gold);font-weight:500;}
-  .hero-desc{
-    max-width:560px;font-size:1rem;line-height:1.75;color:rgba(240,244,255,.7);
-    margin-bottom:2.5rem;animation:fadeUp .8s .45s ease both;
-  }
+  .hero-desc{max-width:560px;font-size:1rem;line-height:1.75;color:rgba(240,244,255,.7);margin-bottom:2.5rem;animation:fadeUp .8s .45s ease both;}
   .hero-actions{display:flex;gap:1rem;flex-wrap:wrap;animation:fadeUp .8s .6s ease both;}
-  .btn-primary{
-    padding:14px 32px;border-radius:50px;
-    background:linear-gradient(135deg,var(--electric2),var(--electric));
-    color:#fff;text-decoration:none;font-weight:600;font-size:.95rem;
-    box-shadow:0 6px 30px rgba(0,170,255,.35);transition:transform .2s,box-shadow .2s;
-    border:none;cursor:pointer;
-  }
-  .btn-primary:hover{transform:translateY(-3px);box-shadow:0 12px 40px rgba(0,170,255,.5);}
-  .btn-outline{
-    padding:14px 32px;border-radius:50px;
-    border:1px solid rgba(0,170,255,.4);color:var(--electric);
-    text-decoration:none;font-weight:500;font-size:.95rem;
-    transition:all .2s;background:transparent;cursor:pointer;
-  }
-  .btn-outline:hover{background:rgba(0,170,255,.08);border-color:var(--electric);}
+  .btn-primary{padding:14px 32px;border-radius:50px;background:linear-gradient(135deg,var(--electric2),var(--electric));color:#fff;text-decoration:none;font-weight:600;font-size:.95rem;box-shadow:0 6px 30px rgba(34,197,94,.35);transition:transform .2s,box-shadow .2s;border:none;cursor:pointer;}
+  .btn-primary:hover{transform:translateY(-3px);box-shadow:0 12px 40px rgba(34,197,94,.5);}
+  .btn-outline{padding:14px 32px;border-radius:50px;border:1px solid rgba(34,197,94,.4);color:var(--electric);text-decoration:none;font-weight:500;font-size:.95rem;transition:all .2s;background:transparent;cursor:pointer;}
+  .btn-outline:hover{background:rgba(34,197,94,.08);border-color:var(--electric);}
 
-  .hero-stats{
-    display:flex;gap:3rem;margin-top:4rem;
-    animation:fadeUp .8s .75s ease both;
-  }
+  .hero-stats{display:flex;gap:3rem;margin-top:4rem;animation:fadeUp .8s .75s ease both;}
   .stat{border-left:2px solid var(--electric);padding-left:1.2rem;}
   .stat-num{font-family:'Syne',sans-serif;font-size:2.2rem;font-weight:800;color:var(--white);line-height:1;}
   .stat-label{font-size:.8rem;color:var(--muted);margin-top:.3rem;letter-spacing:.06em;text-transform:uppercase;}
 
-  /* ── SECTION BASICS ── */
   section{position:relative;z-index:1;padding:100px 5%;}
-  .section-tag{
-    display:inline-block;font-size:.75rem;letter-spacing:.12em;text-transform:uppercase;
-    color:var(--electric);font-weight:600;margin-bottom:.8rem;
-  }
-  .section-title{
-    font-family:'Syne',sans-serif;font-weight:800;
-    font-size:clamp(2rem,4vw,3rem);letter-spacing:-.03em;margin-bottom:1rem;
-  }
+  .section-tag{display:inline-block;font-size:.75rem;letter-spacing:.12em;text-transform:uppercase;color:var(--electric);font-weight:600;margin-bottom:.8rem;}
+  .section-title{font-family:'Syne',sans-serif;font-weight:800;font-size:clamp(2rem,4vw,3rem);letter-spacing:-.03em;margin-bottom:1rem;}
   .section-sub{color:var(--muted);font-size:1rem;line-height:1.7;max-width:500px;}
   .section-header{margin-bottom:4rem;}
   .container{max-width:1100px;margin:0 auto;}
 
-  /* ── ABOUT ── */
   #about{background:linear-gradient(180deg,transparent,rgba(15,37,68,.3));}
   .about-grid{display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:center;}
-  .about-card{
-    background:var(--card);border:1px solid var(--border);
-    border-radius:20px;padding:2.5rem;backdrop-filter:blur(10px);
-    box-shadow:var(--glow);
-  }
-  .about-info-item{
-    display:flex;align-items:flex-start;gap:1rem;padding:1.2rem 0;
-    border-bottom:1px solid rgba(255,255,255,.05);
-  }
+  .about-card{background:var(--card);border:1px solid var(--border);border-radius:20px;padding:2.5rem;backdrop-filter:blur(10px);box-shadow:var(--glow);}
+  .about-info-item{display:flex;align-items:flex-start;gap:1rem;padding:1.2rem 0;border-bottom:1px solid rgba(255,255,255,.05);}
   .about-info-item:last-child{border-bottom:none;}
-  .info-icon{
-    width:40px;height:40px;border-radius:10px;
-    background:rgba(0,170,255,.1);border:1px solid rgba(0,170,255,.2);
-    display:flex;align-items:center;justify-content:center;font-size:1.1rem;flex-shrink:0;
-  }
+  .info-icon{width:40px;height:40px;border-radius:10px;background:rgba(34,197,94,.1);border:1px solid rgba(34,197,94,.2);display:flex;align-items:center;justify-content:center;font-size:1.1rem;flex-shrink:0;}
   .info-label{font-size:.75rem;color:var(--muted);letter-spacing:.06em;text-transform:uppercase;margin-bottom:.25rem;}
   .info-value{font-size:.95rem;font-weight:500;}
-  .cert-badge{
-    display:inline-flex;align-items:center;gap:.5rem;
-    background:linear-gradient(135deg,rgba(240,180,41,.15),rgba(240,180,41,.05));
-    border:1px solid rgba(240,180,41,.3);border-radius:50px;
-    padding:5px 14px;font-size:.8rem;color:var(--gold);font-weight:600;margin-top:.3rem;
-  }
+  .cert-badge{display:inline-flex;align-items:center;gap:.5rem;background:linear-gradient(135deg,rgba(240,180,41,.15),rgba(240,180,41,.05));border:1px solid rgba(240,180,41,.3);border-radius:50px;padding:5px 14px;font-size:.8rem;color:var(--gold);font-weight:600;margin-top:.3rem;}
 
-  /* ── SKILLS ── */
   #skills{background:linear-gradient(180deg,rgba(15,37,68,.3),transparent);}
   .skills-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;}
-  .skill-card{
-    background:var(--card);border:1px solid var(--border);
-    border-radius:16px;padding:1.8rem;backdrop-filter:blur(10px);
-    transition:transform .3s,box-shadow .3s,border-color .3s;
-    cursor:default;
-  }
-  .skill-card:hover{
-    transform:translateY(-6px);
-    box-shadow:0 20px 60px rgba(0,170,255,.15);
-    border-color:rgba(0,170,255,.35);
-  }
+  .skill-card{background:var(--card);border:1px solid var(--border);border-radius:16px;padding:1.8rem;backdrop-filter:blur(10px);transition:transform .3s,box-shadow .3s,border-color .3s;cursor:default;}
+  .skill-card:hover{transform:translateY(-6px);box-shadow:0 20px 60px rgba(34,197,94,.15);border-color:rgba(34,197,94,.35);}
   .skill-icon{font-size:1.6rem;margin-bottom:1rem;}
-  .skill-name{
-    font-family:'Syne',sans-serif;font-weight:700;font-size:1rem;
-    margin-bottom:1rem;color:var(--white);
-  }
+  .skill-name{font-family:'Syne',sans-serif;font-weight:700;font-size:1rem;margin-bottom:1rem;color:var(--white);}
   .skill-tags{display:flex;flex-wrap:wrap;gap:.4rem;}
-  .tag{
-    padding:3px 10px;border-radius:50px;font-size:.73rem;font-weight:500;
-    background:rgba(0,170,255,.08);border:1px solid rgba(0,170,255,.15);
-    color:var(--muted);transition:all .2s;
-  }
-  .skill-card:hover .tag{background:rgba(0,170,255,.12);color:var(--electric);}
+  .tag{padding:3px 10px;border-radius:50px;font-size:.73rem;font-weight:500;background:rgba(34,197,94,.08);border:1px solid rgba(34,197,94,.15);color:var(--muted);transition:all .2s;}
+  .skill-card:hover .tag{background:rgba(34,197,94,.12);color:var(--electric);}
 
-  /* ── EXPERIENCE ── */
-  #experience{}
   .exp-timeline{position:relative;padding-left:2rem;}
-  .exp-timeline::before{
-    content:'';position:absolute;left:0;top:0;bottom:0;width:1px;
-    background:linear-gradient(180deg,transparent,var(--electric),transparent);
-  }
-  .exp-item{
-    position:relative;margin-bottom:3rem;
-    background:var(--card);border:1px solid var(--border);
-    border-radius:20px;padding:2.5rem;backdrop-filter:blur(10px);
-    transition:border-color .3s,box-shadow .3s;
-  }
-  .exp-item:hover{border-color:rgba(0,170,255,.3);box-shadow:var(--glow);}
-  .exp-dot{
-    position:absolute;left:-2.45rem;top:2.5rem;
-    width:14px;height:14px;border-radius:50%;
-    background:var(--electric);box-shadow:0 0 12px var(--electric);
-    border:2px solid var(--navy);
-  }
+  .exp-timeline::before{content:'';position:absolute;left:0;top:0;bottom:0;width:1px;background:linear-gradient(180deg,transparent,var(--electric),transparent);}
+  .exp-item{position:relative;margin-bottom:3rem;background:var(--card);border:1px solid var(--border);border-radius:20px;padding:2.5rem;backdrop-filter:blur(10px);transition:border-color .3s,box-shadow .3s;}
+  .exp-item:last-child{margin-bottom:0;}
+  .exp-item:hover{border-color:rgba(34,197,94,.3);box-shadow:var(--glow);}
+  .exp-dot{position:absolute;left:-2.45rem;top:2.5rem;width:14px;height:14px;border-radius:50%;background:var(--electric);box-shadow:0 0 12px var(--electric);border:2px solid var(--navy);}
+  .exp-dot.intern-dot{background:var(--green);box-shadow:0 0 12px var(--green);}
   .exp-header{display:flex;justify-content:space-between;align-items:flex-start;flex-wrap:wrap;gap:1rem;margin-bottom:1.5rem;}
   .exp-role{font-family:'Syne',sans-serif;font-weight:700;font-size:1.25rem;}
   .exp-company{color:var(--electric);font-weight:500;font-size:.95rem;margin-top:.2rem;}
-  .exp-period{
-    padding:5px 14px;border-radius:50px;font-size:.78rem;font-weight:600;
-    background:rgba(240,180,41,.1);border:1px solid rgba(240,180,41,.25);
-    color:var(--gold);white-space:nowrap;height:fit-content;
-  }
+  .exp-period{padding:5px 14px;border-radius:50px;font-size:.78rem;font-weight:600;background:rgba(240,180,41,.1);border:1px solid rgba(240,180,41,.25);color:var(--gold);white-space:nowrap;height:fit-content;}
+  .exp-period.intern-period{background:rgba(34,197,94,.1);border-color:rgba(34,197,94,.25);color:var(--green);}
+  .exp-badge{display:inline-block;font-size:.72rem;font-weight:600;letter-spacing:.06em;text-transform:uppercase;padding:3px 12px;border-radius:50px;margin-bottom:1rem;}
+  .badge-fulltime{background:rgba(34,197,94,.1);border:1px solid rgba(34,197,94,.2);color:var(--electric);}
+  .badge-intern{background:rgba(34,197,94,.1);border:1px solid rgba(34,197,94,.2);color:var(--green);}
   .exp-list{list-style:none;display:flex;flex-direction:column;gap:.8rem;}
-  .exp-list li{
-    display:flex;gap:.8rem;font-size:.92rem;line-height:1.6;color:rgba(240,244,255,.75);
-  }
-  .exp-list li::before{
-    content:'▸';color:var(--electric);flex-shrink:0;margin-top:.05rem;
-  }
+  .exp-list li{display:flex;gap:.8rem;font-size:.92rem;line-height:1.6;color:rgba(240,244,255,.75);}
+  .exp-list li::before{content:'▸';color:var(--electric);flex-shrink:0;margin-top:.05rem;}
+  .exp-list.intern-list li::before{color:var(--green);}
 
-  /* ── PROJECTS ── */
-  #projects{}
   .projects-grid{display:grid;grid-template-columns:1fr 1fr;gap:1.5rem;}
-  .project-card{
-    background:var(--card);border:1px solid var(--border);
-    border-radius:20px;padding:2.5rem;backdrop-filter:blur(10px);
-    transition:transform .3s,box-shadow .3s,border-color .3s;
-    position:relative;overflow:hidden;
-  }
-  .project-card::before{
-    content:'';position:absolute;top:-50%;right:-50%;
-    width:100%;height:100%;
-    background:radial-gradient(circle,rgba(0,170,255,.06) 0%,transparent 70%);
-    transition:opacity .3s;opacity:0;
-  }
+  .project-card{background:var(--card);border:1px solid var(--border);border-radius:20px;padding:2.5rem;backdrop-filter:blur(10px);transition:transform .3s,box-shadow .3s,border-color .3s;position:relative;overflow:hidden;}
+  .project-card::before{content:'';position:absolute;top:-50%;right:-50%;width:100%;height:100%;background:radial-gradient(circle,rgba(34,197,94,.06) 0%,transparent 70%);transition:opacity .3s;opacity:0;}
   .project-card:hover::before{opacity:1;}
-  .project-card:hover{
-    transform:translateY(-6px);
-    box-shadow:0 25px 60px rgba(0,170,255,.15);
-    border-color:rgba(0,170,255,.3);
-  }
-  .project-card.featured{grid-column:1/-1;}
-  .project-num{
-    font-family:'Syne',sans-serif;font-size:3.5rem;font-weight:800;
-    color:rgba(0,170,255,.08);line-height:1;margin-bottom:.5rem;
-    letter-spacing:-.04em;
-  }
+  .project-card:hover{transform:translateY(-6px);box-shadow:0 25px 60px rgba(34,197,94,.15);border-color:rgba(34,197,94,.3);}
+  .project-num{font-family:'Syne',sans-serif;font-size:3.5rem;font-weight:800;color:rgba(34,197,94,.08);line-height:1;margin-bottom:.5rem;letter-spacing:-.04em;}
   .project-name{font-family:'Syne',sans-serif;font-weight:700;font-size:1.3rem;margin-bottom:.8rem;}
   .project-desc{font-size:.9rem;line-height:1.7;color:rgba(240,244,255,.65);margin-bottom:1.5rem;}
   .project-tags{display:flex;flex-wrap:wrap;gap:.4rem;}
-  .ptag{
-    padding:4px 12px;border-radius:50px;font-size:.73rem;font-weight:600;
-    background:rgba(240,180,41,.1);border:1px solid rgba(240,180,41,.2);color:var(--gold);
-  }
-  .ptag.blue{background:rgba(0,170,255,.1);border-color:rgba(0,170,255,.2);color:var(--electric);}
+  .ptag{padding:4px 12px;border-radius:50px;font-size:.73rem;font-weight:600;background:rgba(240,180,41,.1);border:1px solid rgba(240,180,41,.2);color:var(--gold);}
+  .ptag.green{background:rgba(34,197,94,.1);border-color:rgba(34,197,94,.2);color:var(--electric);}
 
-  /* ── CERT ── */
   #certifications{background:linear-gradient(180deg,transparent,rgba(15,37,68,.3));}
-  .cert-card{
-    max-width:500px;margin:0 auto;
-    background:linear-gradient(135deg,rgba(240,180,41,.12),rgba(15,37,68,.8));
-    border:1px solid rgba(240,180,41,.3);border-radius:24px;
-    padding:3rem;text-align:center;backdrop-filter:blur(10px);
-    box-shadow:0 20px 60px rgba(240,180,41,.1);
-    transition:transform .3s;
-  }
+  .cert-card{max-width:500px;margin:0 auto;background:linear-gradient(135deg,rgba(240,180,41,.12),rgba(15,37,68,.8));border:1px solid rgba(240,180,41,.3);border-radius:24px;padding:3rem;text-align:center;backdrop-filter:blur(10px);box-shadow:0 20px 60px rgba(240,180,41,.1);transition:transform .3s;}
   .cert-card:hover{transform:scale(1.02);}
   .cert-icon{font-size:3.5rem;margin-bottom:1.5rem;display:block;}
   .cert-title{font-family:'Syne',sans-serif;font-weight:800;font-size:1.5rem;margin-bottom:.5rem;}
   .cert-issuer{color:var(--gold);font-size:.9rem;font-weight:500;}
 
-  /* ── CONTACT ── */
   #contact{text-align:center;}
   .contact-inner{max-width:600px;margin:0 auto;}
-  .contact-headline{
-    font-family:'Syne',sans-serif;font-weight:800;
-    font-size:clamp(2rem,5vw,3.5rem);letter-spacing:-.04em;margin-bottom:1rem;
-    background:linear-gradient(135deg,var(--white),var(--electric));
-    -webkit-background-clip:text;-webkit-text-fill-color:transparent;
-  }
+  .contact-headline{font-family:'Syne',sans-serif;font-weight:800;font-size:clamp(2rem,5vw,3.5rem);letter-spacing:-.04em;margin-bottom:1rem;background:linear-gradient(135deg,var(--white),var(--electric));-webkit-background-clip:text;-webkit-text-fill-color:transparent;}
   .contact-sub{color:var(--muted);font-size:1rem;line-height:1.7;margin-bottom:3rem;}
   .contact-links{display:flex;flex-wrap:wrap;justify-content:center;gap:1rem;margin-bottom:4rem;}
-  .contact-link{
-    display:flex;align-items:center;gap:.7rem;
-    padding:14px 24px;border-radius:14px;
-    background:var(--card);border:1px solid var(--border);
-    text-decoration:none;color:var(--white);font-size:.9rem;font-weight:500;
-    transition:all .3s;backdrop-filter:blur(10px);
-  }
-  .contact-link:hover{
-    background:rgba(0,170,255,.1);border-color:rgba(0,170,255,.3);
-    transform:translateY(-3px);box-shadow:0 10px 30px rgba(0,170,255,.15);
-  }
+  .contact-link{display:flex;align-items:center;gap:.7rem;padding:14px 24px;border-radius:14px;background:var(--card);border:1px solid var(--border);text-decoration:none;color:var(--white);font-size:.9rem;font-weight:500;transition:all .3s;backdrop-filter:blur(10px);}
+  .contact-link:hover{background:rgba(34,197,94,.1);border-color:rgba(34,197,94,.3);transform:translateY(-3px);box-shadow:0 10px 30px rgba(34,197,94,.15);}
   .contact-link-icon{font-size:1.1rem;}
 
-  /* ── FOOTER ── */
-  footer{
-    text-align:center;padding:2.5rem 5%;
-    border-top:1px solid var(--border);
-    color:var(--muted);font-size:.82rem;position:relative;z-index:1;
-  }
+  footer{text-align:center;padding:2.5rem 5%;border-top:1px solid var(--border);color:var(--muted);font-size:.82rem;position:relative;z-index:1;}
 
-  /* ── SCROLL REVEAL ── */
   .reveal{opacity:0;transform:translateY(40px);transition:opacity .8s ease,transform .8s ease;}
   .reveal.visible{opacity:1;transform:translateY(0);}
   .reveal-delay-1{transition-delay:.1s;}
@@ -320,30 +147,20 @@
   .reveal-delay-4{transition-delay:.4s;}
   .reveal-delay-5{transition-delay:.5s;}
   .reveal-delay-6{transition-delay:.6s;}
-
   @keyframes fadeUp{from{opacity:0;transform:translateY(30px);}to{opacity:1;transform:translateY(0);}}
 
-  /* ── SCROLLBAR ── */
   ::-webkit-scrollbar{width:6px;}
   ::-webkit-scrollbar-track{background:var(--navy);}
   ::-webkit-scrollbar-thumb{background:var(--electric2);border-radius:3px;}
 
-  /* ── MOBILE ── */
+  .cursor-glow{position:fixed;width:400px;height:400px;border-radius:50%;background:radial-gradient(circle,rgba(34,197,94,.06) 0%,transparent 70%);pointer-events:none;z-index:0;transform:translate(-50%,-50%);transition:left .15s ease,top .15s ease;}
+
   @media(max-width:768px){
     .about-grid,.projects-grid,.skills-grid{grid-template-columns:1fr;}
-    .project-card.featured{grid-column:1;}
     .hero-stats{gap:1.5rem;}
     nav .nav-links{display:none;}
     .exp-timeline{padding-left:1.5rem;}
     .exp-dot{left:-2rem;}
-  }
-
-  /* ── CURSOR GLOW ── */
-  .cursor-glow{
-    position:fixed;width:400px;height:400px;border-radius:50%;
-    background:radial-gradient(circle,rgba(0,170,255,.06) 0%,transparent 70%);
-    pointer-events:none;z-index:0;transform:translate(-50%,-50%);
-    transition:left .15s ease,top .15s ease;
   }
 </style>
 </head>
@@ -407,7 +224,7 @@
           I'm a Salesforce Developer with 4+ years of hands-on experience designing and implementing end-to-end solutions on the Salesforce platform. I specialize in scalable Lightning Web Components, robust Apex logic, and seamless API integrations.
         </p>
         <p class="section-sub reveal reveal-delay-3" style="max-width:100%;">
-          Currently building at Unizen Technologies, previously at Tech Mahindra — delivering enterprise Salesforce apps from Classic-to-Lightning migrations to SAP integrations. Based in Katol, Maharashtra, open to remote opportunities worldwide.
+          Previously at Tech Mahindra, started my Salesforce journey as an intern at Ceptra Infotech — delivering enterprise apps from Classic-to-Lightning migrations to SAP integrations. Based in Katol, Maharashtra, open to remote opportunities worldwide.
         </p>
       </div>
       <div class="about-card reveal reveal-delay-2">
@@ -422,9 +239,9 @@
         <div class="about-info-item">
           <div class="info-icon">🏢</div>
           <div>
-            <div class="info-label">Currently At</div>
-            <div class="info-value">Unizen Technologies Pvt Ltd</div>
-            <div style="font-size:.83rem;color:var(--muted);margin-top:.2rem;">Salesforce Developer · May 2025–Present</div>
+            <div class="info-label">Last Position</div>
+            <div class="info-value">Tech Mahindra Pvt Ltd</div>
+            <div style="font-size:.83rem;color:var(--muted);margin-top:.2rem;">Salesforce Developer · Mar 2022 – Apr 2025</div>
           </div>
         </div>
         <div class="about-info-item">
@@ -518,25 +335,9 @@
       <p class="section-sub reveal reveal-delay-2">Building enterprise Salesforce solutions that scale across industries.</p>
     </div>
     <div class="exp-timeline">
+
+      <!-- Tech Mahindra -->
       <div class="exp-item reveal reveal-delay-1">
-        <div class="exp-dot"></div>
-        <div class="exp-header">
-          <div>
-            <div class="exp-role">Salesforce Developer</div>
-            <div class="exp-company">Unizen Technologies Pvt Ltd</div>
-          </div>
-          <div class="exp-period">May 2025 – Present</div>
-        </div>
-        <ul class="exp-list">
-          <li>Developed and customized Salesforce applications using Apex, Triggers, Lightning Web Components (LWC), and Visualforce.</li>
-          <li>Implemented integrations using REST and SOAP APIs with external systems.</li>
-          <li>Developed Batch Apex, Scheduled Apex, and Apex Test Classes for large data processing and high code coverage.</li>
-          <li>Automated business processes using Salesforce Flows, Workflow Rules, and Validation Rules.</li>
-          <li>Implemented Salesforce security model including OWD, Roles, Profiles, Permission Sets, and Sharing Rules.</li>
-          <li>Performed data migration using Data Loader; supported deployments via Change Sets in Agile/Scrum sprints.</li>
-        </ul>
-      </div>
-      <div class="exp-item reveal reveal-delay-2">
         <div class="exp-dot"></div>
         <div class="exp-header">
           <div>
@@ -545,6 +346,7 @@
           </div>
           <div class="exp-period">Mar 2022 – Apr 2025</div>
         </div>
+        <span class="exp-badge badge-fulltime">Full-time · 3 yrs 1 mo</span>
         <ul class="exp-list">
           <li>Developed modern Lightning Applications using LWC, Lightning App Builder, and Lightning Design System for responsive, scalable UIs.</li>
           <li>Migrated applications from Salesforce Classic to Lightning Experience, improving usability and performance.</li>
@@ -555,6 +357,27 @@
           <li>Developed Apex Test Classes to maintain code quality and support successful deployments.</li>
         </ul>
       </div>
+
+      <!-- Ceptra Infotech -->
+      <div class="exp-item reveal reveal-delay-2">
+        <div class="exp-dot intern-dot"></div>
+        <div class="exp-header">
+          <div>
+            <div class="exp-role">Salesforce Intern</div>
+            <div class="exp-company" style="color:var(--green);">Ceptra Infotech</div>
+          </div>
+          <div class="exp-period intern-period">Oct 2020 – Oct 2021</div>
+        </div>
+        <span class="exp-badge badge-intern">Internship · 1 yr</span>
+        <ul class="exp-list intern-list">
+          <li>Worked on live Salesforce projects, gaining hands-on exposure to real-world enterprise CRM implementations.</li>
+          <li>Learned and applied core Salesforce Admin skills — custom objects, page layouts, workflows, and user management.</li>
+          <li>Developed foundational knowledge of Salesforce development including Apex basics, SOQL, and data management.</li>
+          <li>Assisted in configuring automation using Workflow Rules and Process Builder for client requirements.</li>
+          <li>Collaborated with the development team to understand Salesforce deployment and sandbox management practices.</li>
+        </ul>
+      </div>
+
     </div>
   </div>
 </section>
@@ -574,7 +397,7 @@
         <div class="project-desc">Subscription-based payment management system supporting mobile recharge, DTH recharge, and transaction tracking. Built with Apex, Visualforce, Batch Apex, REST APIs, and automated via Flows and Workflow Rules. Deployed using Change Sets in an Agile/Scrum environment.</div>
         <div class="project-tags">
           <span class="ptag">Apex</span><span class="ptag">Visualforce</span><span class="ptag">Batch Apex</span>
-          <span class="ptag blue">REST API</span><span class="ptag blue">Flows</span><span class="ptag blue">Data Loader</span>
+          <span class="ptag green">REST API</span><span class="ptag green">Flows</span><span class="ptag green">Data Loader</span>
         </div>
       </div>
       <div class="project-card reveal reveal-delay-2">
@@ -582,7 +405,7 @@
         <div class="project-name">Enterprise Lightning Application</div>
         <div class="project-desc">Migrated Salesforce Classic to Lightning Experience with modern LWC interfaces and SLDS. Integrated with SAP (Concord) via REST APIs. Implemented the full Salesforce security model within governor limits — Profiles, Permission Sets, Roles, and Sharing Rules.</div>
         <div class="project-tags">
-          <span class="ptag blue">LWC</span><span class="ptag blue">Lightning App Builder</span><span class="ptag blue">SLDS</span>
+          <span class="ptag green">LWC</span><span class="ptag green">Lightning App Builder</span><span class="ptag green">SLDS</span>
           <span class="ptag">REST API</span><span class="ptag">SAP Integration</span><span class="ptag">Classic Migration</span>
         </div>
       </div>
@@ -592,7 +415,7 @@
         <div class="project-desc">End-to-end Salesforce solution managing the complete insurance sales lifecycle — lead generation to policy issuance, premium collection, and renewals — across multiple states and cities. Covered insurance, health, and vehicle policy types for a distributed agent network.</div>
         <div class="project-tags">
           <span class="ptag">Sales Cloud</span><span class="ptag">Financial Service Cloud</span>
-          <span class="ptag blue">Apex Trigger</span><span class="ptag blue">Assignment Rules</span><span class="ptag blue">SOQL/DML</span>
+          <span class="ptag green">Apex Trigger</span><span class="ptag green">Assignment Rules</span><span class="ptag green">SOQL/DML</span>
         </div>
       </div>
     </div>
@@ -622,16 +445,13 @@
       <p class="contact-sub reveal reveal-delay-2">Open to Salesforce Developer roles, contract work, and new opportunities. I usually reply within 24 hours.</p>
       <div class="contact-links reveal reveal-delay-3">
         <a href="mailto:vaishnavi30charde@gmail.com" class="contact-link">
-          <span class="contact-link-icon">✉️</span>
-          vaishnavi30charde@gmail.com
+          <span class="contact-link-icon">✉️</span>vaishnavi30charde@gmail.com
         </a>
         <a href="tel:9689228907" class="contact-link">
-          <span class="contact-link-icon">📱</span>
-          +91 9689228907
+          <span class="contact-link-icon">📱</span>+91 9689228907
         </a>
         <a href="https://linkedin.com/in/vaishnavi-charde-524465218" target="_blank" class="contact-link">
-          <span class="contact-link-icon">💼</span>
-          LinkedIn Profile
+          <span class="contact-link-icon">💼</span>LinkedIn Profile
         </a>
       </div>
       <a href="mailto:vaishnavi30charde@gmail.com" class="btn-primary reveal reveal-delay-4">Send Me an Email →</a>
@@ -644,108 +464,61 @@
 </footer>
 
 <script>
-// ── PARTICLE CANVAS ──
+// PARTICLE CANVAS
 const canvas = document.getElementById('bg-canvas');
 const ctx = canvas.getContext('2d');
 let W, H, particles = [];
-
-function resize(){
-  W = canvas.width = window.innerWidth;
-  H = canvas.height = window.innerHeight;
-}
+function resize(){ W = canvas.width = window.innerWidth; H = canvas.height = window.innerHeight; }
 resize();
 window.addEventListener('resize', resize);
-
 class Particle {
-  constructor(){this.reset();}
+  constructor(){ this.reset(); }
   reset(){
-    this.x = Math.random()*W;
-    this.y = Math.random()*H;
-    this.vx = (Math.random()-.5)*.3;
-    this.vy = (Math.random()-.5)*.3;
-    this.r = Math.random()*1.5+.5;
-    this.a = Math.random()*.5+.1;
-    this.color = Math.random()>.5 ? '0,170,255' : '240,180,41';
+    this.x = Math.random()*W; this.y = Math.random()*H;
+    this.vx = (Math.random()-.5)*.3; this.vy = (Math.random()-.5)*.3;
+    this.r = Math.random()*1.5+.5; this.a = Math.random()*.5+.1;
+    this.color = Math.random()>.5 ? '34,197,94' : '240,180,41';
   }
-  update(){
-    this.x += this.vx; this.y += this.vy;
-    if(this.x<0||this.x>W||this.y<0||this.y>H) this.reset();
-  }
-  draw(){
-    ctx.beginPath();
-    ctx.arc(this.x,this.y,this.r,0,Math.PI*2);
-    ctx.fillStyle=`rgba(${this.color},${this.a})`;
-    ctx.fill();
-  }
+  update(){ this.x += this.vx; this.y += this.vy; if(this.x<0||this.x>W||this.y<0||this.y>H) this.reset(); }
+  draw(){ ctx.beginPath(); ctx.arc(this.x,this.y,this.r,0,Math.PI*2); ctx.fillStyle=`rgba(${this.color},${this.a})`; ctx.fill(); }
 }
-
 for(let i=0;i<120;i++) particles.push(new Particle());
-
 function connectParticles(){
   for(let i=0;i<particles.length;i++){
     for(let j=i+1;j<particles.length;j++){
       const dx=particles[i].x-particles[j].x, dy=particles[i].y-particles[j].y;
       const dist=Math.sqrt(dx*dx+dy*dy);
-      if(dist<120){
-        ctx.beginPath();
-        ctx.strokeStyle=`rgba(0,170,255,${.08*(1-dist/120)})`;
-        ctx.lineWidth=.5;
-        ctx.moveTo(particles[i].x,particles[i].y);
-        ctx.lineTo(particles[j].x,particles[j].y);
-        ctx.stroke();
-      }
+      if(dist<120){ ctx.beginPath(); ctx.strokeStyle=`rgba(34,197,94,${.08*(1-dist/120)})`; ctx.lineWidth=.5; ctx.moveTo(particles[i].x,particles[i].y); ctx.lineTo(particles[j].x,particles[j].y); ctx.stroke(); }
     }
   }
 }
-
-function animate(){
-  ctx.clearRect(0,0,W,H);
-  particles.forEach(p=>{p.update();p.draw();});
-  connectParticles();
-  requestAnimationFrame(animate);
-}
+function animate(){ ctx.clearRect(0,0,W,H); particles.forEach(p=>{p.update();p.draw();}); connectParticles(); requestAnimationFrame(animate); }
 animate();
 
-// ── CURSOR GLOW ──
+// CURSOR GLOW
 const glow = document.getElementById('cursorGlow');
-document.addEventListener('mousemove', e=>{
-  glow.style.left = e.clientX+'px';
-  glow.style.top = e.clientY+'px';
-});
+document.addEventListener('mousemove', e=>{ glow.style.left=e.clientX+'px'; glow.style.top=e.clientY+'px'; });
 
-// ── SCROLL REVEAL ──
+// SCROLL REVEAL
 const observer = new IntersectionObserver(entries=>{
-  entries.forEach(e=>{
-    if(e.isIntersecting){e.target.classList.add('visible');observer.unobserve(e.target);}
-  });
+  entries.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add('visible'); observer.unobserve(e.target); } });
 },{threshold:.15});
 document.querySelectorAll('.reveal').forEach(el=>observer.observe(el));
 
-// ── COUNTER ANIMATION ──
+// COUNTER ANIMATION
 function animateCounter(el){
-  const target=+el.dataset.count;
-  let current=0;
-  const step=()=>{
-    current = Math.min(current + Math.ceil(target/30), target);
-    el.textContent = current + '+';
-    if(current<target) requestAnimationFrame(step);
-  };
+  const target=+el.dataset.count; let current=0;
+  const step=()=>{ current=Math.min(current+Math.ceil(target/30),target); el.textContent=current+'+'; if(current<target) requestAnimationFrame(step); };
   requestAnimationFrame(step);
 }
 const counterObserver = new IntersectionObserver(entries=>{
-  entries.forEach(e=>{
-    if(e.isIntersecting){
-      animateCounter(e.target);
-      counterObserver.unobserve(e.target);
-    }
-  });
+  entries.forEach(e=>{ if(e.isIntersecting){ animateCounter(e.target); counterObserver.unobserve(e.target); } });
 },{threshold:.5});
 document.querySelectorAll('[data-count]').forEach(el=>counterObserver.observe(el));
 
-// ── NAV SCROLL ──
+// NAV SCROLL
 window.addEventListener('scroll',()=>{
-  const nav=document.querySelector('nav');
-  nav.style.background=window.scrollY>50?'rgba(5,13,26,.95)':'rgba(5,13,26,.85)';
+  document.querySelector('nav').style.background=window.scrollY>50?'rgba(5,13,26,.95)':'rgba(5,13,26,.85)';
 });
 </script>
 </body>
